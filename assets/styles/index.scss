@@ -1,2 +1,121 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+$background-color: #d6dad5;
+$container-color: #86608e;
+//$white: #fff;
+//$font-color: #000;
+
+
+
+body {
+  background-color: $container-color;
+  //not showing up, don't know what matters
+  //position: fixed;
+  padding-bottom: 70px;
+  text-align: center;
+}
+
+
+
+.sqa {
+  border-bottom-style: solid;
+  border-left-style: hidden;
+  border-right-style: solid;
+  border-top-style: hidden;
+  clear: left;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.sqb {
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: hidden;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.sqc {
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: hidden;
+  border-top-style: hidden;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.sqd {
+  border-bottom-style: solid;
+  border-left-style: hidden;
+  border-right-style: solid;
+  border-top-style: solid;
+  clear: left;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.sqe {
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: solid;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.sqf {
+  border-bottom-style: solid;
+  border-left-style: solid;
+  border-right-style: hidden;
+  border-top-style: solid;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.sqg {
+  border-bottom-style: hidden;
+  border-left-style: hidden;
+  border-right-style: solid;
+  border-top-style: solid;
+  clear: left;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.sqh {
+  border-bottom-style: hidden;
+  border-left-style: solid;
+  border-right-style: solid;
+  border-top-style: solid;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.sqi {
+  border-bottom-style: hidden;
+  border-left-style: solid;
+  border-right-style: hidden;
+  border-top-style: solid;
+  float: left;
+  height: 150px;
+  width: 25%;
+}
+
+.bottom {
+  clear: both;
+}
+
+.container-fluid {
+  //background-color: $background-color;
+  height: 20px;
+}

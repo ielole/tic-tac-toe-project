@@ -2,13 +2,52 @@
 <html>
     <head>
       <title>Play Tic-Tac-Toe</title>
-
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
+      <link rel="stylesheet" type="text/css" href="assets/styles/index.scss">
     </head>
-    <body class="container-fluid">
+    <body>
+
+      <!--NAVBAR STARTS HERE -->
+      <body>
+        <nav class="navbar navbar-inverse"> <!--normally ..-default => inverse made black background with white text -->
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+              <!--  <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span> Don't appear to have a purpose-->
+              </button>
+              <a class="navbar-brand" href="#">TIC-TACS</a> <!--changed title on right side -->
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign IN/Up ? <!--<span class="caret"></span>  span is empty and doesn't appear to do anything--></a>
+                  <ul class="dropdown-menu">
+                    <li>
+
+                    <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+          Sign Up Bro
+        </button> </li>
+                    <li><a href="#">SIGN IN</a></li>
+                    <li><a href="#">CHANGE PASSWORD</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">SIGN OUT</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+        <!--NAVBAR ENDS HERE-->
+
       <h1>How to Play Tic-Tac-Toe</h1>
 
       <p>
@@ -18,23 +57,36 @@
         same directions. Ecetera...
       </p>
 
+
       <div class="container">
         <div class="top-row">
-          <div class="col-md-4 sqa">a</div>
-          <div class="col-md-4 sqb">b</div>
-          <div class="col-md-4 sqc">c</div>
+          <div class="col-xs-4 sqa">
+            <div class="content">a</div>
+          </div>
+          <div class="col-xs-4 sqb">b</div>
+          <div class="col-xs-4 sqc">c</div>
         </div>
         <div class="top-mid">
-          <div class="col-md-4 sqd">d</div>
-          <div class="col-md-4 sqe">e</div>
-          <div class="col-md-4 sqf">f</div>
+          <div class="col-xs-4 sqd">d</div>
+          <div class="col-xs-4 sqe">e</div>
+          <div class="col-xs-4 sqf">f</div>
         </div>
         <div class="top-bottom">
-          <div class="col-md-4 sqg">g</div>
-          <div class="col-md-4 sqh">h</div>
-          <div class="col-md-4 sqi">i</div>
+          <div class="col-xs-4 sqg">g</div>
+          <div class="col-xs-4 sqh">h</div>
+          <div class="col-xs-4 sqi">i</div>
         </div>
       </div>
+
+      <div class="bottom">
+        <nav class="navbar navbar-default navbar-fixed-bottom">
+          <div class="container-fluid">
+            <a href="https://twitter.com/ari_is_reading"> Hello from the other side!</a>
+          </div>
+        </nav>
+
+      </div>
+
 
 
     </body>
