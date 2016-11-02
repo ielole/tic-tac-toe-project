@@ -4,7 +4,7 @@
       <title>Play Tic-Tac-Toe</title>
       <script src="vendor.bundle.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="bundle.js" type="text/javascript" charset="utf-8" defer></script>
-      <link rel="stylesheet" type="text/css" href="assets/styles/index.scss">
+      <link rel="stylesheet" type="text/x-scss" href="assets/styles/index.scss">
     </head>
     <body>
                         <!--NAVBAR STARTS HERE -->
@@ -68,6 +68,12 @@
       </div>
     </main>
 
+    <div id="messages">
+        Not a message.
+          <hr>
+    </div>
+          <hr>
+
       <!-- Sign-up Modal -->
 <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signInLabel">
 <div class="modal-dialog" role="document">
@@ -90,7 +96,7 @@
             <label for="password confirmation">Password Confirmation</label>
             <input type="password" name="credentials[password_confirmation]" placeholder="Confirm Password">
           </div>
-          <button type="submit" class="sign-up-button">Submit</button>
+          <button type="submit" name="submit" class="sign-up-button">Submit</button>
         </form>
   </div>
 </div>
@@ -116,7 +122,7 @@
             <label for="password">Password</label>
             <input type="password" name="credentials[password]" placeholder="Password">
           </div>
-          <button type="submit" class="sign-in-button">Submit</button>
+          <button type="submit" name="submit" class="sign-in-button">Submit</button>
         </form>
   </div>
 </div>
@@ -142,7 +148,7 @@
             <label for="new-password">New Password</label>
             <input type="password" name="passwords[new]" placeholder="New Password">
           </div>
-          <button type="submit" class="change-password-button">Submit</button>
+          <button type="submit" name="submit" class="change-password-button">Submit</button>
         </form>
   </div>
 </div>
@@ -161,15 +167,13 @@
     <div class="modal-body">
       <form id="sign-out">
         <div class="form-group">
-          <button type="submit" class="sign-out-button">Sign Out</button>
+        </div>
+          <button type="submit" name="submit" class="sign-out-button">Sign Out</button>
       </form>
         </div>
     </div>
     </div>
   </div>
-</div>
-
-
 
       <div class="bottom">
         <nav class="navbar navbar-default navbar-fixed-bottom">

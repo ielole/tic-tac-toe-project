@@ -9,8 +9,8 @@ const success = (data) => {
 
 const signInSuccess = (data) => {
   store.user = data.user;
-  success(data);
-};
+   success(data);
+  };
 
 const failure = (error) => {
   $('#messages').text('fail');

@@ -9,9 +9,9 @@ const signUp = (data) =>
     method: 'POST',
     data,
   });
-   /* new Promise(function (resolve, reject) {
-    console.log(data);  <-- to see what data looks like
-  ---> showed that the success error message works correctly
+   /*new Promise(function (resolve, reject) {
+    console.log(data);  -->to see what data looks like
+   showed that the success error message works correctly <--
     if (Math.random() > 0.5) {
       resolve('in signUp');
     } else {
@@ -19,34 +19,34 @@ const signUp = (data) =>
       error.data = data;
       reject(error);
     }
-  });
-  */
+  }); */
+
 
   const signIn = (data) =>
-    $.ajax ({
-      url: config.host + '/sign-in',
-      method: 'POST',
-      data,
-    });
+     $.ajax ({
+       url: config.host + '/sign-in',
+       method: 'POST',
+       data,
+     });
 
-    const changePassword = (data) =>
-      $.ajax ({
-        url: config.host + '/change-password/' + store.user.id,
-        method: 'PATCH',
-        data,
-        headers: {
-          Authorization: 'Token token=' + store.user.token, /* necessary to save games */
-        }
-      });
+     const changePassword = (data) =>
+       $.ajax ({
+         url: config.host + '/change-password/' + store.user.id,
+         method: 'PATCH',
+         data,
+         headers: {
+           Authorization: 'Token token=' + store.user.token, /* necessary to save games */
+         }
+       });
 
-      const signOut = () =>
-        $.ajax ({
-          url: config.host + '/sign-out/' +store.user.id,
-          method: 'DELETE',
-          headers: {
-            Authorization: 'Token token=' + store.user.token,
-          }
-        });
+       const signOut = () =>
+         $.ajax ({
+           url: config.host + '/sign-out/' +store.user.id,
+           method: 'DELETE',
+           headers: {
+             Authorization: 'Token token=' + store.user.token,
+           }
+         });
 
 
 module.exports = {
