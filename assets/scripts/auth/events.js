@@ -46,15 +46,15 @@ const onAClick = function() {
 let playerX;
 let playerO;
 const board = ['','','','','','','','',''];
-let turnNum = 1;
+let turnNum = 0;
 //for every div on the board
-for (let i = 0; i <board.length; i++) {
-  //if the text is not blank
-  if (board[i] === )) {
-    turnNum = turnNum + 1;
-    //add one to turnNum
-  }
-}
+// for (let i = 0; i <board.length; i++) {
+//   //if the text is not blank
+//   if (board[i] === )) {
+//     turnNum = turnNum + 1;
+//     //add one to turnNum
+//   }
+// }
 //use turnNum to determine when to start checking for a win condition
 const winnerCondition = function() {
   for (let i = 0; i < board.length; i++) {
@@ -67,7 +67,7 @@ const winnerCondition = function() {
 }
  };
 
-
+//create a function which increments playerTurn called changePlayer
 //use turnNum % to determine which player
 let playerTurn;
   if (turnNum % 2 === 0) {
@@ -78,21 +78,19 @@ let playerTurn;
     console.log(playerO);
   }
 
+const putSymbol = function(squareLetter, squareId) {
+  if (playerTurn === 1) {
+    $(squareLetter).text('x');
+    board[squareId] = 'x';
+  }  else {
+    $(squareLetter).text('o');
+    board[squareId] = 'o';
+  }
+};
+
 
 const onBClick = function() {
-  //if playerX then display 'x'
-  if (playerTurn === 1) {
-    $('#sqb').text('x');
-    //board[1] = 'x';
-  //  board.splice(1,0,'x');
-  }
-  //else display 'o'
-  else {
-    $('#sqb').text('o');
-    //board[1] = 'o';
-    //board.splice(1,0,'o');
-  }
-  console.log(board[1]); //preventDefault? on event
+  putSymbol('#sqb', 1);
 };
 
 
