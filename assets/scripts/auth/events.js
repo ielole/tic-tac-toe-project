@@ -36,69 +36,121 @@ const onSignUp = function (event) {
      .catch(ui.failure);
  };
 
-//const howManyClicks = function () {
-  //for (let i = 1; i < 9; i++) {
-  //  let numberOfClicks = i;
-  //  if (numberOfClicks % 2 === 0) {
-  //    $('#sqa').text('o');
-  //  } else {
-  //    $('#sqa').text('x');
-   //console.log('CLICK');
-//  }
-//  }
-//};
-let board = ['#sqa','#sqb','#sqc','#sqd','#sqe','#sqf','#sqg','#sqh','#sqi'];
-let clickNumber = [1,2,3,4,5,6,7,8,9];
 
-const placeSymbol = function () {
-  for (let i = 0; i < clickNumber.length; i++){
-    if (clickNumber[i] % 2 === 0) {
-      $(board[j]).text('o');
-      } else {
-      $(board[j]).text('x');
-    }
-  }
+const onAClick = function() {
+    $('#sqa').text('x');
+  console.log('CLICK');
 };
 
-//const placeSymbol = function () {
-  //for (let i = 0; i < clickNumber.length; i++){
-    //if (clickNumber[i] % 2 === 0) {
-      //$('#sqa').text('o');
-      //} else {
-      //$('#sqa').text('x');
-    //}
-  //}
-//};
 
- //const onXClick = function() {
-   //if (numberOfClicks % 2 === 0) {
-     //$('#sqa').text('x');
-   //} else {
-   //$('#sqb').text('x');
-  //console.log('CLICK');
-//};
+let playerX;
+let playerO;
+const board = ['','','','','','','','',''];
+let turnNum = 1;
+//for every div on the board
+for (let i = 0; i <board.length; i++) {
+  //if the text is not blank
+  if (board[i] === )) {
+    turnNum = turnNum + 1;
+    //add one to turnNum
+  }
+}
+//use turnNum to determine when to start checking for a win condition
+const winnerCondition = function() {
+  for (let i = 0; i < board.length; i++) {
+    if ((turnNum >= 5) &&
+      ((board[0] === 'x') &&
+      (board[1] === 'x') &&
+      (board[2] === 'x'))) {
+        console.log('Player X Wins!');
+      }
+}
+ };
+
+
+//use turnNum % to determine which player
+let playerTurn;
+  if (turnNum % 2 === 0) {
+  playerTurn = 1;
+    console.log(playerX);
+  } else {
+    playerTurn = 2;
+    console.log(playerO);
+  }
+
+
+const onBClick = function() {
+  //if playerX then display 'x'
+  if (playerTurn === 1) {
+    $('#sqb').text('x');
+    //board[1] = 'x';
+  //  board.splice(1,0,'x');
+  }
+  //else display 'o'
+  else {
+    $('#sqb').text('o');
+    //board[1] = 'o';
+    //board.splice(1,0,'o');
+  }
+  console.log(board[1]); //preventDefault? on event
+};
 
 
 
+const onCClick = function() {
+    $('#sqc').text('x');
+  console.log('CLICK');
+};
 
+const onDClick = function() {
+    $('#sqd').text('x');
+  console.log('CLICK');
+};
+
+const onEClick = function() {
+    $('#sqe').text('x');
+  console.log('CLICK');
+};
+
+const onFClick = function() {
+    $('#sqf').text('x');
+  console.log('CLICK');
+};
+
+const onGClick = function() {
+    $('#sqg').text('x');
+  console.log('CLICK');
+};
+
+const onHClick = function() {
+    $('#sqh').text('x');
+  console.log('CLICK');
+};
+
+const onIClick = function() {
+    $('#sqi').text('x');
+  console.log('CLICK');
+};
 
 const addHandlers = () => {
   $('#sign-up').on('submit', onSignUp);
    $('#sign-in').on('submit', onSignIn);
    $('#change-password').on('submit', onChangePassword);
    $('#sign-out').on('submit', onSignOut);
-   $('board[j]').on('click', placeSymbol);
-   //$('#sqb').on('click', onXClick);
-   //$('#sqc').on('click', onXClick);
-   //$('#sqd').on('click', onXClick);
-   //$('#sqe').on('click', onXClick);
-   //$('#sqf').on('click', onXClick);
-  //$('#sqg').on('click', onXClick);
-   //$('#sqh').on('click', onXClick);
-   //$('#sqi').on('click', onXClick);
+
+   $('#sqa').on('click', onAClick);
+   $('#sqb').on('click', onBClick);
+   $('#sqc').on('click', onCClick);
+   $('#sqd').on('click', onDClick);
+   $('#sqe').on('click', onEClick);
+   $('#sqf').on('click', onFClick);
+   $('#sqg').on('click', onGClick);
+   $('#sqh').on('click', onHClick);
+   $('#sqi').on('click', onIClick);
 
 };
 
 module.exports = {
   addHandlers,
+  playerTurn,
 };
