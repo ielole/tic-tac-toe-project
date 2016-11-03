@@ -5,11 +5,15 @@ const store = require('../store.js');
 const success = (data) => {
   $('#messages').text('success');
   console.log(data);
+  $('#signOutModal').modal('hide');
+  $('#signUpModal').modal('hide');
+  $('#changePasswordModal').modal('hide');
 };
 
 const signInSuccess = (data) => {
   store.user = data.user;
    success(data);
+   $('#signInModal').modal('hide');
   };
 
 const failure = (error) => {

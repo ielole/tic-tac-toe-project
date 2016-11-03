@@ -36,10 +36,48 @@ const onSignUp = function (event) {
      .catch(ui.failure);
  };
 
- const onXClick = function() {
-  console.log('CLICK');
-  return ('x');
- };
+//const howManyClicks = function () {
+  //for (let i = 1; i < 9; i++) {
+  //  let numberOfClicks = i;
+  //  if (numberOfClicks % 2 === 0) {
+  //    $('#sqa').text('o');
+  //  } else {
+  //    $('#sqa').text('x');
+   //console.log('CLICK');
+//  }
+//  }
+//};
+let board = ['#sqa','#sqb','#sqc','#sqd','#sqe','#sqf','#sqg','#sqh','#sqi'];
+let clickNumber = [1,2,3,4,5,6,7,8,9];
+
+const placeSymbol = function () {
+  for (let i = 0; i < clickNumber.length; i++){
+    if (clickNumber[i] % 2 === 0) {
+      $(board[j]).text('o');
+      } else {
+      $(board[j]).text('x');
+    }
+  }
+};
+
+//const placeSymbol = function () {
+  //for (let i = 0; i < clickNumber.length; i++){
+    //if (clickNumber[i] % 2 === 0) {
+      //$('#sqa').text('o');
+      //} else {
+      //$('#sqa').text('x');
+    //}
+  //}
+//};
+
+ //const onXClick = function() {
+   //if (numberOfClicks % 2 === 0) {
+     //$('#sqa').text('x');
+   //} else {
+   //$('#sqb').text('x');
+  //console.log('CLICK');
+//};
+
 
 
 
@@ -49,15 +87,15 @@ const addHandlers = () => {
    $('#sign-in').on('submit', onSignIn);
    $('#change-password').on('submit', onChangePassword);
    $('#sign-out').on('submit', onSignOut);
-   $('#sqa').on('click', onXClick);
-   $('#sqb').on('click', onXClick);
-   $('#sqc').on('click', onXClick);
-   $('#sqd').on('click', onXClick);
-   $('#sqe').on('click', onXClick);
-   $('#sqf').on('click', onXClick);
-   $('#sqg').on('click', onXClick);
-   $('#sqh').on('click', onXClick);
-   $('#sqi').on('click', onXClick);
+   $('board[j]').on('click', placeSymbol);
+   //$('#sqb').on('click', onXClick);
+   //$('#sqc').on('click', onXClick);
+   //$('#sqd').on('click', onXClick);
+   //$('#sqe').on('click', onXClick);
+   //$('#sqf').on('click', onXClick);
+  //$('#sqg').on('click', onXClick);
+   //$('#sqh').on('click', onXClick);
+   //$('#sqi').on('click', onXClick);
 
 };
 
