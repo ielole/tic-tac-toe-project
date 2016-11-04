@@ -3,15 +3,14 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 $background-color: #d6dad5;
 $container-color: #86608e;
-//$white: #fff;
-//$font-color: #000;
+$message-font-size: 50px;
+$white: #fff;
+$font-color: #000;
 
 
 
 body {
   background-color: $container-color;
-  //not showing up, don't know what matters
-  //position: fixed;
   padding-bottom: 70px;
   text-align: center;
 }
@@ -121,4 +120,13 @@ body {
 
 .centerme {
   margin: 0 auto;
+}
+
+.col-xs-4 {
+  color: $font-color;
+}
+
+.board {
+  color: $white;
+  font-size: $message-font-size;
 }
