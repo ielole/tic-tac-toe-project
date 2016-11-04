@@ -49,30 +49,27 @@
     <main class="board">
       <div class="container centerme">
         <div class="top-row">
-          <div class="col-xs-4 sqa">
-            <div class="content">a</div>
-          </div>
-          <div class="col-xs-4 sqb">b</div>
-          <div class="col-xs-4 sqc">c</div>
+          <div id="sqa" class="col-xs-4 sqa"></div>
+          <div id="sqb" class="col-xs-4 sqb"></div>
+          <div id="sqc" class="col-xs-4 sqc"></div>
         </div>
         <div class="top-mid">
-          <div class="col-xs-4 sqd">d</div>
-          <div class="col-xs-4 sqe">e</div>
-          <div class="col-xs-4 sqf">f</div>
+          <div id="sqd" class="col-xs-4 sqd"></div>
+          <div id="sqe" class="col-xs-4 sqe"></div>
+          <div id="sqf" class="col-xs-4 sqf"></div>
         </div>
         <div class="top-bottom">
-          <div class="col-xs-4 sqg">g</div>
-          <div class="col-xs-4 sqh">h</div>
-          <div class="col-xs-4 sqi">i</div>
+          <div id="sqg" class="col-xs-4 sqg"></div>
+          <div id="sqh" class="col-xs-4 sqh"></div>
+          <div id="sqi" class="col-xs-4 sqi"></div>
         </div>
       </div>
     </main>
 
-    <div id="messages">
-        Not a message.
-          <hr>
-    </div>
-          <hr>
+    <!--<div id="messages">
+        Welcome to the Game!
+    </div> -->
+
 
       <!-- Sign-up Modal -->
 <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signInLabel">
@@ -115,7 +112,7 @@
     <div class="modal-body">
         <form id="sign-in">
           <div class="form-group">
-            <label for='sign-up-email'>Email address</label>
+            <label for='sign-in-email'>Email address</label>
             <input type="text" name="credentials[email]" placeholder="E-Mail">
           </div>
           <div class="form-group">
