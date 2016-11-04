@@ -37,46 +37,24 @@ const onSignUp = function (event) {
  };
 
 
-const onAClick = function() {
-    $('#sqa').text('x');
-  console.log('CLICK');
-};
 
 
-let playerX;
-let playerO;
+
 const board = ['','','','','','','','',''];
 let turnNum = 0;
-//for every div on the board
-// for (let i = 0; i <board.length; i++) {
-//   //if the text is not blank
-//   if (board[i] === )) {
-//     turnNum = turnNum + 1;
-//     //add one to turnNum
-//   }
-// }
-//use turnNum to determine when to start checking for a win condition
-const winnerCondition = function() {
-  for (let i = 0; i < board.length; i++) {
-    if ((turnNum >= 5) &&
-      ((board[0] === 'x') &&
-      (board[1] === 'x') &&
-      (board[2] === 'x'))) {
-        console.log('Player X Wins!');
-      }
-}
- };
 
+// use turnNum % to determine which player
 //create a function which increments playerTurn called changePlayer
-//use turnNum % to determine which player
 let playerTurn;
-  if (turnNum % 2 === 0) {
-  playerTurn = 1;
-    console.log(playerX);
+const changePlayer = function() {
+    if (turnNum % 2 === 0) {
+      playerTurn = 1;
   } else {
-    playerTurn = 2;
-    console.log(playerO);
+      playerTurn = 2;
   }
+    turnNum += 1;
+};
+
 
 const putSymbol = function(squareLetter, squareId) {
   if (playerTurn === 1) {
@@ -86,48 +64,72 @@ const putSymbol = function(squareLetter, squareId) {
     $(squareLetter).text('o');
     board[squareId] = 'o';
   }
+  changePlayer();
 };
 
+const onAClick = function() {
+  putSymbol('#sqa', 0);
+};
 
 const onBClick = function() {
   putSymbol('#sqb', 1);
 };
 
-
-
 const onCClick = function() {
-    $('#sqc').text('x');
-  console.log('CLICK');
+    putSymbol('#sqc', 2);
 };
 
 const onDClick = function() {
-    $('#sqd').text('x');
-  console.log('CLICK');
+    putSymbol('#sqd', 3);
 };
 
 const onEClick = function() {
-    $('#sqe').text('x');
-  console.log('CLICK');
+    putSymbol('#sqe', 4);
 };
 
 const onFClick = function() {
-    $('#sqf').text('x');
-  console.log('CLICK');
+  putSymbol('#sqf', 5);
 };
 
 const onGClick = function() {
-    $('#sqg').text('x');
-  console.log('CLICK');
+  putSymbol('#sqg', 6);
 };
 
 const onHClick = function() {
-    $('#sqh').text('x');
-  console.log('CLICK');
+  putSymbol('#sqh', 7);
 };
 
 const onIClick = function() {
-    $('#sqi').text('x');
-  console.log('CLICK');
+  putSymbol('#sqi', 8);
+};
+
+//use turnNum to determine when to start checking for a win condition
+const winnerCondition = function() {
+  for (let i = 0; i < board.length; i++) {
+    if (
+      board[0] === 'x' && board[1] === 'x' && board[2] === 'x' ||
+      board[3] === 'x' && board[4] === 'x' && board[5] === 'x' ||
+      board[6] === 'x' && board[7] === 'x' && board[8] === 'x' ||
+      board[0] === 'x' && board[3] === 'x' && board[6] === 'x' ||
+      board[1] === 'x' && board[4] === 'x' && board[7] === 'x' ||
+      board[2] === 'x' && board[5] === 'x' && board[8] === 'x' ||
+      board[0] === 'x' && board[4] === 'x' && board[8] === 'x' ||
+      board[2] === 'x' && board[4] === 'x' && board[6] === 'x' ) {
+      console.log("Player X Wins!");
+    } else if (
+      board[0] === 'o'&& board[1] === 'o' &&board[2] === 'o'||
+      board[3] === 'o'&& board[4] === 'o' && board[5] === 'o'||
+      board[6] === 'o'&& board[7] === 'o' && board[8] === 'o'||
+      board[0] === 'o'&& board[3] === 'o' && board[6] === 'o'||
+      board[1] === 'o'&& board[4] === 'o' && board[7] === 'o'||
+      board[2] === 'o'&& board[5] === 'o' && board[8] === 'o'||
+      board[0] === 'o'&& board[4] === 'o' && board[8] === 'o'||
+      board[2] === ''&& board[4] === 'o' && board[6] === 'o' ) {
+      console.log("Player O Wins!");
+    } else {
+      console.log("Cat's Game");
+}
+}
 };
 
 const addHandlers = () => {
@@ -151,4 +153,6 @@ const addHandlers = () => {
 module.exports = {
   addHandlers,
   playerTurn,
+  changePlayer,
+  winnerCondition,
 };
