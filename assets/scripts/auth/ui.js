@@ -3,7 +3,7 @@
 const store = require('../store.js');
 
 const success = (data) => {
-  $('#messages').text('success');
+  //$('.messages').text('success');
   console.log(data);
   $('#signOutModal').modal('hide');
   $('#signUpModal').modal('hide');
@@ -13,12 +13,20 @@ const success = (data) => {
 const signInSuccess = (data) => {
   store.user = data.user;
    success(data);
+   //$('.messages').text("You've' successfully signed in!");
    $('#signInModal').modal('hide');
   };
 
-const failure = (error) => {
+//const signOutSuccess = (data) => {
+  //store.user = data.user;
+  //success(data);
+  //$('.messages').text("You've' successfully signed out!");
+  //$('#signOutModal').modal('hide');
+//};
+
+const failure = () => {
   $('#messages').text('fail');
-  console.error(error);
+  //console.error(error);
 };
 
 
@@ -27,8 +35,5 @@ module.exports = {
   failure,
   success,
   signInSuccess,
+  //signOutSuccess,
 };
-// this file handles error conditions
-//for implicit return only one expression (one line of code), otherwise need {}
-// data = whole object --> to get token === store.token = data.user.token
-//use something that already exists on line 12
