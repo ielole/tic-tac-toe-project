@@ -65,19 +65,23 @@ const winnerCondition = function() {
       board[2] === 'x' && board[4] === 'x' && board[6] === 'x' ) {
       console.log("Player X Wins!");
     } else if (
-      board[0] === 'o'&& board[1] === 'o' &&board[2] === 'o'||
-      board[3] === 'o'&& board[4] === 'o' && board[5] === 'o'||
-      board[6] === 'o'&& board[7] === 'o' && board[8] === 'o'||
-      board[0] === 'o'&& board[3] === 'o' && board[6] === 'o'||
-      board[1] === 'o'&& board[4] === 'o' && board[7] === 'o'||
-      board[2] === 'o'&& board[5] === 'o' && board[8] === 'o'||
-      board[0] === 'o'&& board[4] === 'o' && board[8] === 'o'||
-      board[2] === 'o'&& board[4] === 'o' && board[6] === 'o' ) {
+      board[0] === 'o' && board[1] === 'o' && board[2] === 'o'||
+      board[3] === 'o' && board[4] === 'o' && board[5] === 'o'||
+      board[6] === 'o' && board[7] === 'o' && board[8] === 'o'||
+      board[0] === 'o' && board[3] === 'o' && board[6] === 'o'||
+      board[1] === 'o' && board[4] === 'o' && board[7] === 'o'||
+      board[2] === 'o' && board[5] === 'o' && board[8] === 'o'||
+      board[0] === 'o' && board[4] === 'o' && board[8] === 'o'||
+      board[2] === 'o' && board[4] === 'o' && board[6] === 'o' ) {
       console.log("Player O Wins!");
-    } else {
+    } else if (turnNum === 9) {
       console.log("Cat's Game");
-}
+    }
 };
+
+
+//
+
 
 const putSymbol = function(squareLetter, squareId) {
   if (playerTurn === 1) {
@@ -88,8 +92,8 @@ const putSymbol = function(squareLetter, squareId) {
     board[squareId] = 'o';
   }
   changePlayer();
-    if (turnNum >= 5) {
-  winnerCondition();
+  if (turnNum >= 5) {
+    winnerCondition();
   }
 };
 

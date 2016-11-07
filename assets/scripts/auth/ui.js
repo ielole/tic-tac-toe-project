@@ -3,7 +3,7 @@
 const store = require('../store.js');
 
 const success = (data) => {
-  //$('.messages').text('success');
+  $('.messages').text('success');
   console.log(data);
   $('#signOutModal').modal('hide');
   $('#signUpModal').modal('hide');
@@ -13,7 +13,7 @@ const success = (data) => {
 const signInSuccess = (data) => {
   store.user = data.user;
    success(data);
-   //$('.messages').text("You've' successfully signed in!");
+   $('.messages').text("You've' successfully signed in!");
    $('#signInModal').modal('hide');
   };
 
@@ -24,9 +24,9 @@ const signInSuccess = (data) => {
   //$('#signOutModal').modal('hide');
 //};
 
-const failure = () => {
+const failure = (error) => {
   $('#messages').text('fail');
-  //console.error(error);
+  console.error(error);
 };
 
 
