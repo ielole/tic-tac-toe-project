@@ -32,7 +32,7 @@ const onSignUp = function (event) {
  const onSignOut = function (event) {
    event.preventDefault();
    api.signOut()
-     .then(ui.success)
+     .then(ui.signOutSuccess)
      .catch(ui.failure);
  };
 
@@ -63,7 +63,8 @@ const winnerCondition = function() {
       board[2] === 'x' && board[5] === 'x' && board[8] === 'x' ||
       board[0] === 'x' && board[4] === 'x' && board[8] === 'x' ||
       board[2] === 'x' && board[4] === 'x' && board[6] === 'x' ) {
-      console.log("Player X Wins!");
+      $('.playerMessages').text("Player X Wins!");
+      //console.log("Player X Wins!");
     } else if (
       board[0] === 'o' && board[1] === 'o' && board[2] === 'o'||
       board[3] === 'o' && board[4] === 'o' && board[5] === 'o'||
@@ -73,14 +74,23 @@ const winnerCondition = function() {
       board[2] === 'o' && board[5] === 'o' && board[8] === 'o'||
       board[0] === 'o' && board[4] === 'o' && board[8] === 'o'||
       board[2] === 'o' && board[4] === 'o' && board[6] === 'o' ) {
-      console.log("Player O Wins!");
+      $('.playerMessages').text("Player O Wins!");
+      //console.log("Player O Wins!");
     } else if (turnNum === 9) {
-      console.log("Cat's Game");
+      $('.playerMessages').text("Cat's Game!");
+      //console.log("Cat's Game");
     }
 };
 
 
-//
+//create a function which evaluates if the game is over
+const gameOver = function() {
+  if (winnerCondition() === true) {
+    //does this actually evaluate this way
+    console.log("Game over");
+  }
+};
+//makes unclicked squares not clickable if game is over
 
 
 const putSymbol = function(squareLetter, squareId) {
@@ -91,9 +101,13 @@ const putSymbol = function(squareLetter, squareId) {
     $(squareLetter).text('o');
     board[squareId] = 'o';
   }
+  //make squares not clickable after placing a symbol in the square
+  $(squareLetter).off('click');
+  //debugger;
   changePlayer();
   if (turnNum >= 5) {
     winnerCondition();
+    gameOver();
   }
 };
 
@@ -158,4 +172,5 @@ module.exports = {
   playerTurn,
   changePlayer,
   winnerCondition,
+  gameOver,
 };
