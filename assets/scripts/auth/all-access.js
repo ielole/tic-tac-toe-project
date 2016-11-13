@@ -1,11 +1,11 @@
 'use strict';
 
-const vars {
-gameOver:
-};
+// const vars {
+// gameOver:
+// };
 
 
 module.exports = {
-vars,
+// vars,
 
 };
