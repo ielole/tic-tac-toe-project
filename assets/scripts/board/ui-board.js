@@ -3,19 +3,6 @@
 const board = ['','','','','','','','',''];
 let turnNum = 0;
 
-// use turnNum % to determine which player
-//create a function which increments playerTurn called changePlayer
-// let playerTurn === 'player X';
-// const changePlayer = function() {
-//     if (turnNum % 2 === 0) {
-//       playerTurn = 'player X';
-//   } else {
-//       playerTurn = 'player O';
-//   }
-//     turnNum += 1;
-// };
-
-
 //use turnNum to determine when to start checking for a win condition
 const winnerCondition = function() {
     if (
@@ -49,7 +36,6 @@ const winnerCondition = function() {
     }
 };
 
-
  //create a function which evaluates if the game is over
 const gameOver = function() {
    if (winnerCondition()) {
@@ -65,22 +51,6 @@ const boardLock = function() {
   }
 };
 // causes gameOver to run second time?
-
-// check each element in the board arrary
- // for (let i = 0; i < board.length; i++) {
-// if the element is ''
-    // if (board[i] === '') {
-      //  debugger;
-// then turn off click in that div
-      // $(squareLetter).off('click');
-   //does this actually evaluate this way
-   // }
-    // }
-
-// if winnerCondition is true
-// and there are empty strings in the array
-//then lock the empty strings AND the associated divs
-
 
 const putSymbol = function(squareLetter, squareId) {
   if (turnNum % 2 === 0) {
@@ -140,42 +110,6 @@ const onIClick = function() {
   putSymbol('#sqi', 8);
 };
 
-// const offAGameOver = function() {
-//   gameOver('#sqa');
-// };
-//
-// const offBGameOver = function() {
-//   gameOver('#sqb');
-// };
-//
-// const offCGameOver = function() {
-//   gameOver('#sqc');
-// };
-//
-// const offDGameOver = function() {
-//   gameOver('#sqd');
-// };
-//
-// const offEGameOver = function() {
-//   gameOver('#sqe');
-// };
-//
-// const offFGameOver = function() {
-//   gameOver('#sqf');
-// };
-//
-// const offGGameOver = function() {
-//   gameOver('#sqg');
-// };
-//
-// const offHGameOver = function() {
-//   gameOver('#sqh');
-// };
-//
-// const offIGameOver = function() {
-//   gameOver('#sqi');
-// };
-
 const addboardHandler = () => {
   $('#sqa').on('click', onAClick);
   $('#sqb').on('click', onBClick);
@@ -186,16 +120,6 @@ const addboardHandler = () => {
   $('#sqg').on('click', onGClick);
   $('#sqh').on('click', onHClick);
   $('#sqi').on('click', onIClick);
-
-  // $('#sqa').off('click', offAGameOver);
-  // $('#sqb').off('click', offBGameOver);
-  // $('#sqc').off('click', offCGameOver);
-  // $('#sqd').off('click', offDGameOver);
-  // $('#sqe').off('click', offEGameOver);
-  // $('#sqf').off('click', offFGameOver);
-  // $('#sqg').off('click', offGGameOver);
-  // $('#sqh').off('click', offHGameOver);
-  // $('#sqi').off('click', offIGameOver);
 };
 
 module.exports = {
