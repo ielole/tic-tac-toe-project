@@ -7,8 +7,9 @@ const createGame = () =>
     url: config.host + '/games',
     method: 'POST',
     headers: {
-      Authorization: 'Token token=' + store.user.token, /* necessary to save games */
-   }
+      Authorization: 'Token token=' + store.user.token,
+   },
+   game: {},
   });
 
 const showGame = (data) =>
