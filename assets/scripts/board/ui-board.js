@@ -1,5 +1,14 @@
 "use strict";
 
+const store = require('../store.js');
+
+//creatGameSuccess
+const creatGameSuccess = (data) => {
+  store.game = data.game;
+  $('.messages').text('NEW GAME');
+};
+
+
 const board = ['','','','','','','','',''];
 let turnNum = 0;
 
@@ -36,6 +45,12 @@ const winnerCondition = function() {
     }
 };
 
+
+  //create a function which creates a newGame
+  const newGame = function() {
+
+  };
+
  //create a function which evaluates if the game is over
 const gameOver = function() {
    if (winnerCondition()) {
@@ -52,6 +67,7 @@ const boardLock = function() {
 };
 // causes gameOver to run second time?
 
+// function to alternate placement of 'x' and 'o'
 const putSymbol = function(squareLetter, squareId) {
   if (turnNum % 2 === 0) {
   // (playerTurn === 'player X') {
@@ -65,7 +81,6 @@ const putSymbol = function(squareLetter, squareId) {
     turnNum += 1;
   //make squares not clickable after placing a symbol in the square
   $(squareLetter).off('click');
-  // changePlayer();
   if (turnNum >= 5) {
     winnerCondition();
     gameOver();
@@ -124,9 +139,9 @@ const addboardHandler = () => {
 
 module.exports = {
   addboardHandler,
-  // playerTurn,
-  //changePlayer,
   winnerCondition,
   gameOver,
   boardLock,
+  newGame,
+  creatGameSuccess,
 };
