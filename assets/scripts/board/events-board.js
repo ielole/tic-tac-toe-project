@@ -1,13 +1,13 @@
 'use strict';
-// const getFormFields = require(`../../../lib/get-form-fields`);
-
-//
+const logic = require('./logic.js');
+const store = require('../store.js');
 const apiBoard = require('./api-board.js');
 const uiBoard = require('./ui-board.js');
 
-const onCreateGame = function (event) {
-  event.preventDefault();
-  apiBoard.createGame()
+const onCreateGame = function() {
+  // event.preventDefault();
+  logic.newGame();
+  apiBoard.createGame(store.gameData)
     .then(uiBoard.creatGameSuccess)
     .catch(uiBoard.failure);
 };

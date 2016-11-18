@@ -2,14 +2,14 @@
 const config = require('../config.js');
 const store = require('../store.js');
 
-const createGame = () =>
+const createGame = (gameData) =>
     $.ajax ({
     url: config.host + '/games',
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token,
    },
-   game: {},
+   gameData,
   });
 
 const showGame = (data) =>
@@ -18,7 +18,7 @@ const showGame = (data) =>
     method: 'GET',
     data,
     headers: {
-      Authorization: 'Token token=' + store.game.token, /* necessary to save games */
+      Authorization: 'Token token=' + store.game.token,
    }
   });
 

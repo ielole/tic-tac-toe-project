@@ -1,6 +1,8 @@
 'use strict';
 
-const board = ['','','','','','','','',''];
+const store = require('../store.js');
+let gameData = {};
+let board = ['','','','','','','','',''];
 let turnNum = 0;
 
 //use turnNum to determine when to start checking for a win condition
@@ -38,25 +40,48 @@ const winnerCondition = function() {
 
 
   //create a function which creates a newGame
+  // create a game object
   const newGame = function() {
-
+    gameData = {
+    game: {
+      cells: board,
+      over: false,
+      player_x: {
+        id: store.user_id,
+        email: store.user.email
+      },
+      player_o: {}
+    }
   };
+  store.gameData = gameData;
+};
 
  //create a function which evaluates if the game is over
 const gameOver = function() {
    if (winnerCondition()) {
     console.log("Game over");
+    // store.gameData.game.over = true;
     return true;
-   }
+  } else {
+    // store.gameData.game.over = false;
+    return false;
+  }
 };
 
 //function that makes unclicked squares not clickable if game is over
 const boardLock = function() {
   if (gameOver()) {
     $('.col-xs-4').off('click');
+    store.gameData.game.over = true;
   }
 };
 // causes gameOver to run second time?
+
+// create a function to clear the board and associated array
+const clearBoard = function() {
+
+};
+
 
 // function to alternate placement of 'x' and 'o'
 const putSymbol = function(squareLetter, squareId) {
@@ -134,4 +159,5 @@ module.exports = {
   gameOver,
   boardLock,
   newGame,
+  clearBoard,
 };
