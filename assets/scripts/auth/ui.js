@@ -2,6 +2,8 @@
 
 const store = require('../store.js');
 
+$('#board').hide();
+
 const success = (data) => {
   $('.messages').text('success');
   console.log(data);
@@ -15,6 +17,8 @@ const signInSuccess = (data) => {
    success(data);
    $('.messages').text("You've successfully signed in!");
    $('#signInModal').modal('hide');
+  //  $('.col-xs-4').off('click');
+   $('#board').show();
   };
 
 const signOutSuccess = (data) => {
@@ -22,6 +26,7 @@ const signOutSuccess = (data) => {
   success(data);
   $('.messages').text("You've successfully signed out!");
   $('#signOutModal').modal('hide');
+  $('#board').hide();
 };
 
 const failure = (error) => {

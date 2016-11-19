@@ -5,6 +5,7 @@ let gameData = {};
 let board = ['','','','','','','','',''];
 let turnNum = 0;
 
+
 //use turnNum to determine when to start checking for a win condition
 const winnerCondition = function() {
     if (
@@ -54,11 +55,34 @@ const winnerCondition = function() {
     }
   };
   store.gameData = gameData;
+  // for (let i = 0; i < board.length; i++) {
+  //   board[i] = '';
+// };
+};
+
+// // figure out how to refer to the squares in general
+// const updateGame = function() {
+//   gameData = {
+//     game: { cell:
+//       { index: ,
+//         value:
+//       }
+//     }
+//   };
+// };
+
+// create a function to clear the board and associated array
+const clearBoard = function() {
+  for (let i = 0; i < board.length; i++) {
+    board[i] = '';
+  }
+  $('.col-xs-4').text('');
 };
 
  //create a function which evaluates if the game is over
 const gameOver = function() {
    if (winnerCondition()) {
+     //clearBoard();
     console.log("Game over");
     // store.gameData.game.over = true;
     return true;
@@ -68,40 +92,44 @@ const gameOver = function() {
   }
 };
 
+
+
 //function that makes unclicked squares not clickable if game is over
 const boardLock = function() {
   if (gameOver()) {
-    $('.col-xs-4').off('click');
-    store.gameData.game.over = true;
+    // $('.col-xs-4').off('click');
+    // store.gameData.game.over = true;
   }
 };
 // causes gameOver to run second time?
 
-// create a function to clear the board and associated array
-const clearBoard = function() {
 
-};
 
 
 // function to alternate placement of 'x' and 'o'
 const putSymbol = function(squareLetter, squareId) {
+  // to be able to click in a square you need to have a game id
+  // on createGameSuccess return the current game id to me
   if (turnNum % 2 === 0) {
   // (playerTurn === 'player X') {
     $(squareLetter).text('x');
     board[squareId] = 'x';
+    // store.gameData.index;
   }else {
   // if (playerTurn === 'player O') {
     $(squareLetter).text('o');
     board[squareId] = 'o';
+    // store.gameData.index;
   }
     turnNum += 1;
   //make squares not clickable after placing a symbol in the square
-  $(squareLetter).off('click');
+  // $(squareLetter).off('click'); --> makes board squares unclickable after createGameSuccess
   if (turnNum >= 5) {
     winnerCondition();
     gameOver();
     boardLock();
   }
+
 };
 
 // make squares clickable
@@ -159,5 +187,6 @@ module.exports = {
   gameOver,
   boardLock,
   newGame,
+  // updateGame,
   clearBoard,
 };

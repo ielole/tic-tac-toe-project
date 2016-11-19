@@ -38,12 +38,18 @@ const onSignUp = function (event) {
  };
 
 const addHandlers = () => {
+
   $('#sign-up').on('submit', onSignUp);
   $('#sign-in').on('submit', onSignIn);
   $('#change-password').on('submit', onChangePassword);
   $('#sign-out').on('submit', onSignOut);
 };
 
+// const notTilSignInSuccess = () => {
+// $('#board').hide();
+// };
+
 module.exports = {
   addHandlers,
+  // notTilSignInSuccess
 };
