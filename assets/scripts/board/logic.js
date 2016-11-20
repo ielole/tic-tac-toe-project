@@ -1,7 +1,10 @@
 'use strict';
-
-const store = require('../store.js');
-let gameData = {};
+const boardEvents = require('./events-board.js');
+// const allAccess = require('../auth/all-access.js');
+// const store = require('../store.js');
+// let gameData = {};
+let endOfGame;
+let boardValue;
 let board = ['','','','','','','','',''];
 let turnNum = 0;
 
@@ -40,32 +43,32 @@ const winnerCondition = function() {
 };
 
 
-  //create a function which creates a newGame
-  // create a game object
-  const newGame = function() {
-    gameData = {
-    game: {
-      cells: board,
-      over: false,
-      player_x: {
-        id: store.user_id,
-        email: store.user.email
-      },
-      player_o: {}
-    }
-  };
-  store.gameData = gameData;
-  // for (let i = 0; i < board.length; i++) {
-  //   board[i] = '';
+//   //create a function which creates a newGame
+//   // create a game object
+//   const newGame = function() {
+//     gameData = {
+//     game: {
+//       cells: board,
+//       over: false,
+//       player_x: {
+//         id: store.user_id,
+//         email: store.user.email
+//       },
+//       player_o: {}
+//     }
+//   };
+//   store.gameData = gameData;
+//   // for (let i = 0; i < board.length; i++) {
+//   //   board[i] = '';
+// // };
 // };
-};
-
-// // figure out how to refer to the squares in general
-// const updateGame = function() {
+//
+// //figure out how to refer to the squares in general
+// const updateGame = function(squareId, boardValue) {
 //   gameData = {
 //     game: { cell:
-//       { index: ,
-//         value:
+//       { index: squareId,
+//         value: boardValue
 //       }
 //     }
 //   };
@@ -77,6 +80,7 @@ const clearBoard = function() {
     board[i] = '';
   }
   $('.col-xs-4').text('');
+  // turnNum = 0;
 };
 
  //create a function which evaluates if the game is over
@@ -85,11 +89,14 @@ const gameOver = function() {
      //clearBoard();
     console.log("Game over");
     // store.gameData.game.over = true;
-    return true;
+    endOfGame = true;
+    return endOfGame;
   } else {
+    endOfGame = false;
     // store.gameData.game.over = false;
-    return false;
+    return endOfGame;
   }
+
 };
 
 
@@ -97,9 +104,9 @@ const gameOver = function() {
 //function that makes unclicked squares not clickable if game is over
 const boardLock = function() {
   if (gameOver()) {
-    // $('.col-xs-4').off('click');
-    // store.gameData.game.over = true;
+     $('.col-xs-4').off('click');
   }
+  // store.gameData.game.over = true;
 };
 // causes gameOver to run second time?
 
@@ -114,22 +121,31 @@ const putSymbol = function(squareLetter, squareId) {
   // (playerTurn === 'player X') {
     $(squareLetter).text('x');
     board[squareId] = 'x';
+    boardValue = 'x';
+    boardEvents.onUpdatePlay(squareId, boardValue);
+    // store.gameData.game.cell.index = squareId;
+    // store.gameData.game.cell.value = 'x';
     // store.gameData.index;
   }else {
   // if (playerTurn === 'player O') {
     $(squareLetter).text('o');
     board[squareId] = 'o';
+    boardValue = 'o';
+    boardEvents.onUpdatePlay(squareId, boardValue);
+    // store.gameData.game.cell.index = squareId;
+    // store.gameData.game.cell.value = 'o';
     // store.gameData.index;
   }
     turnNum += 1;
   //make squares not clickable after placing a symbol in the square
-  // $(squareLetter).off('click'); --> makes board squares unclickable after createGameSuccess
-  if (turnNum >= 5) {
+     $(squareLetter).off('click');
+  //  the ABOVE makes board squares unclickable after createGameSuccess
+  // if (turnNum >= 5) {
     winnerCondition();
     gameOver();
     boardLock();
-  }
-
+  // }
+  // console.log(store.gameData.game.index);
 };
 
 // make squares clickable
@@ -186,7 +202,7 @@ module.exports = {
   winnerCondition,
   gameOver,
   boardLock,
-  newGame,
+  // newGame,
   // updateGame,
   clearBoard,
 };
