@@ -24,17 +24,22 @@ const createGameSuccess = (gameData) => {
 //     // }
 //   // return game_id;
 };
+
 //
 const createGameFailure = () => {
   $('.messages').text('Please SIGN IN');
 };
+
 //
 const updateGameSuccess = (gameData) => {
   store.gameData.game = gameData.game;
 };
-//
-//
-//
+
+const getGamesSuccess = (gameData) => {
+  $('.messages').text('NUMBER OF GAMES PLAYED = ' + gameData.games.length);
+  console.log(gameData.games.length);
+};
+
 const failure = (error) => {
   $('.messages').text('game fail');
   console.error(error);
@@ -48,4 +53,5 @@ module.exports = {
   success,
   failure,
   createGameFailure,
+  getGamesSuccess,
 };

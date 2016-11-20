@@ -63,7 +63,9 @@ const onUpdatePlay = function(squareId, boardValue) {
 //
 
 const onGetGames = function() {
-console.log('game gotten!');
+apiBoard.showIndex()
+  .then(uiBoard.getGamesSuccess)
+  .catch(uiBoard.failure);
 };
 
  const addGameHandler = () => {
