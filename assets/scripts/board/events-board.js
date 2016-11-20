@@ -1,5 +1,5 @@
 'use strict';
-// const logic = require('./logic.js');
+ // const logic = require('./logic.js');
 // const allAccess = require('../auth/all-access.js');
 const store = require('../store.js');
 const apiBoard = require('./api-board.js');
@@ -61,12 +61,19 @@ const onUpdatePlay = function(squareId, boardValue) {
 //     .catch(uiBoard.failure);
 // };
 //
+
+const onGetGames = function() {
+console.log('game gotten!');
+};
+
  const addGameHandler = () => {
 //   // when the create-game id is clicked, call the onCreateGame function
   $('#create-game').on('click', onCreateGame);
+  $('#get-games').on('click', onGetGames);
  };
 //
 module.exports = {
   addGameHandler,
   onUpdatePlay,
+  onGetGames,
 };
