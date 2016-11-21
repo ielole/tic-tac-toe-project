@@ -31,3 +31,7 @@
     // --still returns a game object in console, when explicitly returned
 
 // (interesting idea) $('.col-xs-4').on('click',logic.putSymbol(squareLetter, squareId));
+
+// next commit
+// - made winner message go away with createGameSuccess
+// - changed how squares were only clickable one time

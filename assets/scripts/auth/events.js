@@ -35,6 +35,7 @@ const onSignUp = function (event) {
    api.signOut()
      .then(ui.signOutSuccess)
      .catch(ui.failure);
+     $('.playerMessages').text('');
  };
 
 const addHandlers = () => {

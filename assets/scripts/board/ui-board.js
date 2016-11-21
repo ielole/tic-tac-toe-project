@@ -1,36 +1,34 @@
 "use strict";
- $('#board').hide();
-// const logic = require ('./logic.js');
+// const logictwo = require('./logic.js');
 const store = require('../store.js');
-//
+
 const success = (gameData) => {
   $('.messages').text('success');
   console.log(gameData);
 };
-//
-// //creatGameSuccess
+
+const failure = (error) => {
+  $('.messages').text('game fail');
+  console.error(error);
+};
+
+//creatGameSuccess
 const createGameSuccess = (gameData) => {
-//   // $('.col-xs-4').on('click');
+  // $('.col-xs-4').on('click');
   store.game = gameData.game;
-//   logic.clearBoard();
+
+  $('.playerMessages').text("");
   $('.messages').text('NEW GAME');
+  // debugger;
+  // logictwo.clearBoard();
+  $('#board').show();
   console.log(gameData);
-//   // let game_id = gameData.game.id;
-//
-//     // if (game_id === undefined) {
-//     //   $('.col-xs-4').off('click');
-//     // } else {
-//     //   $('.col-xs-4').on('click');
-//     // }
-//   // return game_id;
 };
 
-//
 const createGameFailure = () => {
-  $('.messages').text('Please SIGN IN');
+  $('.messages').text('Please SIGN IN to PLAY a game.');
 };
 
-//
 const updateGameSuccess = (gameData) => {
   store.gameData.game = gameData.game;
 };
@@ -40,18 +38,16 @@ const getGamesSuccess = (gameData) => {
   console.log(gameData.games.length);
 };
 
-const failure = (error) => {
-  $('.messages').text('game fail');
-  console.error(error);
+const getGamesFailure = () => {
+  $('.messages').text('Please SIGN IN to view NUM of Games PLAYED.');
 };
-//
-//
-//
+
 module.exports = {
-  createGameSuccess,
-  updateGameSuccess,
   success,
   failure,
+  createGameSuccess,
   createGameFailure,
+  updateGameSuccess,
   getGamesSuccess,
+  getGamesFailure,
 };

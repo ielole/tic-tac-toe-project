@@ -12,39 +12,27 @@ const createGame = (gameData) =>
    gameData,
   });
 
-// const showGame = (data) =>
-//     $.ajax ({
-//     url: config.host + '/games/' + store.game.id,
-//     method: 'GET',
-//     data,
-//     headers: {
-//       Authorization: 'Token token=' + store.game.token,
-//    }
-//   });
-//
-  const showIndex = (player_x) =>
-      $.ajax ({
-      url: config.host + '/games',
-      method: 'GET',
-      headers: {
-        Authorization: 'Token token=' + store.user.token, /* necessary to save games */
-     },
-     player_x,
-    });
+const showIndex = () =>
+    $.ajax ({
+    url: config.host + '/games',
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token, /* necessary to save games */
+    }
+  });
 
-    const updatePlay = (gameData) =>
-        $.ajax ({
-        url: config.host + '/games/' + store.game.id,
-        method: 'PATCH',
-        data: gameData,
-        headers: {
-          Authorization: 'Token token=' + store.user.token, /* necessary to save games */
-       }
-      });
-//
+const updatePlay = (gameData) =>
+    $.ajax ({
+    url: config.host + '/games/' + store.game.id,
+    method: 'PATCH',
+    data: gameData,
+    headers: {
+      Authorization: 'Token token=' + store.user.token,
+    }
+  });
+
 module.exports = {
   createGame,
-  // showGame,
   showIndex,
   updatePlay,
 };
