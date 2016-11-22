@@ -28,6 +28,7 @@ const signOutSuccess = (data) => {
   $('.messages').text("You've successfully signed out!");
   $('#signOutModal').modal('hide');
   $('#board').hide();
+  $('.show-me-the-buttons').hide();
   // $('#create-game').off('click');
 
 };
