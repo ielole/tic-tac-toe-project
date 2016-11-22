@@ -17,6 +17,7 @@ const signInSuccess = (data) => {
   success(data);
   $('.messages').text("You've successfully signed in!");
   $('#signInModal').modal('hide');
+  $('.show-me-the-buttons').show();
   //  $('.col-xs-4').off('click');
   // $('#board').show();
   };
