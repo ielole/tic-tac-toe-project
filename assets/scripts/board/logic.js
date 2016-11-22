@@ -67,6 +67,7 @@ const clearBoard = function() {
   $('#sqi').css('pointer-events', 'auto');
 
   $('#board').hide();
+  $('.messages').text("");
 // ---------
 //   for (let i = 0; i < board.length; i++) {
 //     board[i] = '';
