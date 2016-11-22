@@ -7,15 +7,11 @@ $message-font-size: 50px;
 $white: #fff;
 $font-color: #000;
 
-
-
 body {
   background-color: $container-color;
   padding-bottom: 70px;
   text-align: center;
 }
-
-
 
 .sqa {
   border-bottom-style: solid;
@@ -124,9 +120,13 @@ body {
 
 .col-xs-4 {
   color: $font-color;
+  font-size: $message-font-size;
 }
 
-.board {
-  color: $white;
-  font-size: $message-font-size;
+.btn-secondary {
+  margin: 2em;
+}
+
+.show-me-the-buttons {
+  display: none;
 }
