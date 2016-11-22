@@ -65,6 +65,8 @@ const clearBoard = function() {
   $('#sqg').css('pointer-events', 'auto');
   $('#sqh').css('pointer-events', 'auto');
   $('#sqi').css('pointer-events', 'auto');
+
+  $('#board').hide();
 // ---------
 //   for (let i = 0; i < board.length; i++) {
 //     board[i] = '';
