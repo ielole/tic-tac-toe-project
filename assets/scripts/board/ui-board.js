@@ -1,5 +1,6 @@
 "use strict";
 const store = require('../store.js');
+const logic = require('./logic.js');
 
 
 const success = (gameData) => {
@@ -18,6 +19,7 @@ const createGameSuccess = (gameData) => {
   $('.playerMessages').text("");
   $('.messages').text('NEW GAME');
   $('#board').show();
+   logic.clearBoard();
   console.log(gameData);
 };
 
@@ -26,7 +28,7 @@ const createGameFailure = () => {
 };
 
 const updateGameSuccess = (gameData) => {
-  store.gameData.game = gameData.game;
+  store.game = gameData.game;
 };
 
 const getGamesSuccess = (gameData) => {

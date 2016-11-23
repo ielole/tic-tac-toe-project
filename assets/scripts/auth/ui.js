@@ -31,10 +31,11 @@ const signOutSuccess = (data) => {
   success(data);
   $('.messages').text("You've successfully signed out!");
   $('#signOutModal').modal('hide');
-  // $('#board').hide();
+  $('#board').hide();
   $('.show-me-the-buttons').hide();
   $('.signed-in').hide();
   $('.signed-out').show();
+
   // return true;
   // $('#create-game').off('click');
 

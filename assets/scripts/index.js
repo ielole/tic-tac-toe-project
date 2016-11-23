@@ -1,13 +1,13 @@
 'use strict';
 
 const authEvents = require('./auth/events.js');
-const gameLogic = require('./board/logic.js');
+// const gameLogic = require('./board/logic.js');
 const gameEvents = require('./board/events-board');
 
 //on document ready --> when DOM is finished being created
 $(()=>{
   authEvents.addHandlers();
-  gameLogic.addboardHandler();
+  // gameLogic.addboardHandler();
   gameEvents.addGameHandler();
   $('.signed-in').hide();
 });
