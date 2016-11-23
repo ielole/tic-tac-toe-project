@@ -57,19 +57,19 @@ webpackJsonp([0],[
 	var onSignUp = function onSignUp(event) {
 	  var data = getFormFields(this);
 	  event.preventDefault();
-	  api.signUp(data).then(ui.success).catch(ui.failure);
+	  api.signUp(data).then(ui.signUpSuccess).catch(ui.signUpFailure);
 	};
 
 	var onSignIn = function onSignIn(event) {
 	  var data = getFormFields(this);
 	  event.preventDefault();
-	  api.signIn(data).then(ui.signInSuccess).catch(ui.failure);
+	  api.signIn(data).then(ui.signInSuccess).catch(ui.signInFailure);
 	};
 
 	var onChangePassword = function onChangePassword(event) {
 	  var data = getFormFields(this);
 	  event.preventDefault();
-	  api.changePassword(data).then(ui.success).catch(ui.failure);
+	  api.changePassword(data).then(ui.changePasswordSuccess).catch(ui.changePasswordFailure);
 	};
 
 	var onSignOut = function onSignOut(event) {
@@ -248,9 +248,19 @@ webpackJsonp([0],[
 	var success = function success(data) {
 	  $('.messages').text('success');
 	  console.log(data);
-	  //$('#signOutModal').modal('hide');
+	  // $('#changePasswordModal').modal('hide');
+	};
+
+	var signUpSuccess = function signUpSuccess() {
+	  $(".messages").text("You've successfully created an account! Now you can sign in and play Tic-Tac-Toe!");
+	  $("#sign-up").trigger("reset");
+	  $("#signUpModal").modal("hide");
+	};
+
+	var signUpFailure = function signUpFailure() {
+	  $('.messages').text("Oops! Either, that email address already has an account or your passwords don't match. Try Again.");
+	  $("#sign-up").trigger("reset");
 	  $('#signUpModal').modal('hide');
-	  $('#changePasswordModal').modal('hide');
 	};
 
 	var signInSuccess = function signInSuccess(data) {
@@ -259,11 +269,31 @@ webpackJsonp([0],[
 	  $('.messages').text("You've successfully signed in!");
 	  $('#signInModal').modal('hide');
 	  $('.show-me-the-buttons').show();
+	  $("#sign-in").trigger("reset");
 	  $('.signed-in').show();
 	  $('.signed-out').hide();
+	  // $("#sign-in").trigger("reset");
 	  // logic.clearBoard();
 	  //  $('.col-xs-4').off('click');
 	  // $('#board').show();
+	};
+
+	var signInFailure = function signInFailure() {
+	  $(".messages").text("Oops, something went wrong. Try signing in again.");
+	  $("#sign-in").trigger("reset");
+	  $("#signInModal").modal("hide");
+	};
+
+	var changePasswordSuccess = function changePasswordSuccess() {
+	  $(".messages").text("Congrats! You've successfully changed your password.");
+	  $("#change-password").trigger("reset");
+	  $('#changePasswordModal').modal('hide');
+	};
+
+	var changePasswordFailure = function changePasswordFailure() {
+	  $(".messages").text("Oops, something went wrong. Try changing your password again.");
+	  $("#change-password").trigger("reset");
+	  $('#changePasswordModal').modal('hide');
 	};
 
 	var signOutSuccess = function signOutSuccess(data) {
@@ -276,20 +306,22 @@ webpackJsonp([0],[
 	  $('.show-me-the-buttons').hide();
 	  $('.signed-in').hide();
 	  $('.signed-out').show();
-
-	  // return true;
-	  // $('#create-game').off('click');
 	};
 
 	var failure = function failure(error) {
-	  $('.messages').text('fail');
+	  $('.messages').text('Oops, try again.');
 	  console.error(error);
 	};
 
 	module.exports = {
 	  failure: failure,
 	  success: success,
+	  signUpSuccess: signUpSuccess,
+	  signUpFailure: signUpFailure,
 	  signInSuccess: signInSuccess,
+	  signInFailure: signInFailure,
+	  changePasswordSuccess: changePasswordSuccess,
+	  changePasswordFailure: changePasswordFailure,
 	  signOutSuccess: signOutSuccess
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
