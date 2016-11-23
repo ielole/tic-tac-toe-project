@@ -1,6 +1,7 @@
 "use strict";
-// const logictwo = require('./logic.js');
 const store = require('../store.js');
+const logic = require('./logic.js');
+
 
 const success = (gameData) => {
   $('.messages').text('success');
@@ -14,14 +15,11 @@ const failure = (error) => {
 
 //creatGameSuccess
 const createGameSuccess = (gameData) => {
-  // $('.col-xs-4').on('click');
   store.game = gameData.game;
-
   $('.playerMessages').text("");
   $('.messages').text('NEW GAME');
-  // debugger;
-  // logictwo.clearBoard();
   $('#board').show();
+   logic.clearBoard();
   console.log(gameData);
 };
 
@@ -30,7 +28,7 @@ const createGameFailure = () => {
 };
 
 const updateGameSuccess = (gameData) => {
-  store.gameData.game = gameData.game;
+  store.game = gameData.game;
 };
 
 const getGamesSuccess = (gameData) => {
