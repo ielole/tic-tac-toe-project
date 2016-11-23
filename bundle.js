@@ -26,15 +26,15 @@ webpackJsonp([0],[
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
 	var authEvents = __webpack_require__(3);
-	var gameLogic = __webpack_require__(9);
+	// const gameLogic = require('./board/logic.js');
 	var gameEvents = __webpack_require__(10);
 
 	//on document ready --> when DOM is finished being created
 	$(function () {
-	  // $('.show-me-the-buttons').hide();
 	  authEvents.addHandlers();
-	  gameLogic.addboardHandler();
+	  // gameLogic.addboardHandler();
 	  gameEvents.addGameHandler();
+	  $('.signed-in').hide();
 	});
 
 	// this file with the code above allows the code from the required files to
@@ -79,7 +79,6 @@ webpackJsonp([0],[
 	};
 
 	var addHandlers = function addHandlers() {
-
 	  $('#sign-up').on('submit', onSignUp);
 	  $('#sign-in').on('submit', onSignIn);
 	  $('#change-password').on('submit', onChangePassword);
@@ -241,6 +240,7 @@ webpackJsonp([0],[
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
 
+	var logic = __webpack_require__(9);
 	var store = __webpack_require__(7);
 
 	$('#board').hide();
@@ -259,17 +259,25 @@ webpackJsonp([0],[
 	  $('.messages').text("You've successfully signed in!");
 	  $('#signInModal').modal('hide');
 	  $('.show-me-the-buttons').show();
+	  $('.signed-in').show();
+	  $('.signed-out').hide();
+	  // logic.clearBoard();
 	  //  $('.col-xs-4').off('click');
 	  // $('#board').show();
 	};
 
 	var signOutSuccess = function signOutSuccess(data) {
 	  //store.user = data.user;
+	  logic.clearBoard();
 	  success(data);
 	  $('.messages').text("You've successfully signed out!");
 	  $('#signOutModal').modal('hide');
 	  $('#board').hide();
 	  $('.show-me-the-buttons').hide();
+	  $('.signed-in').hide();
+	  $('.signed-out').show();
+
+	  // return true;
 	  // $('#create-game').off('click');
 	};
 
@@ -291,8 +299,9 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {'use strict';
-
-	var boardEvents = __webpack_require__(10);
+	// const boardEvents = require('./events-board.js');
+	// const authUi = require('../auth/ui.js');
+	// const store = require('../store.js');
 
 	var boardValue = void 0;
 	var board = ['', '', '', '', '', '', '', '', ''];
@@ -341,8 +350,9 @@ webpackJsonp([0],[
 	  $('#sqh').css('pointer-events', 'auto');
 	  $('#sqi').css('pointer-events', 'auto');
 
-	  $('#board').hide();
+	  // $('#board').hide();
 	  $('.messages').text("");
+	  console.log('all clear');
 	  // ---------
 	  //   for (let i = 0; i < board.length; i++) {
 	  //     board[i] = '';
@@ -355,7 +365,7 @@ webpackJsonp([0],[
 	//create a function which evaluates if the game is over
 	var gameOver = function gameOver() {
 	  if (winnerCondition()) {
-	    clearBoard();
+	    //  clearBoard();
 	    console.log("Game over");
 	    // store.gameData.game.over = true;
 	    // endOfGame = true;
@@ -370,13 +380,25 @@ webpackJsonp([0],[
 	//function that makes unclicked squares not clickable if game is over
 	var boardLock = function boardLock() {
 	  if (gameOver()) {
-	    $('.col-xs-4').off('click');
+	    $('.col-xs-4').css('pointer-events', 'none');
 	  }
 	  return true;
 	  // store.gameData.game.over = true;
 	};
 	// causes gameOver to run second time?
-
+	// const updateGame = function() {
+	// let gameData = {
+	//   game: {
+	//     cell: {
+	//       index: squareId,
+	//       value: boardValue
+	//     },
+	//     "over": false,
+	//   }
+	// };
+	// console.log(gameData);
+	// store.gameData = gameData;
+	// };
 
 	// function to alternate placement of 'x' and 'o'
 	var putSymbol = function putSymbol(squareLetter, squareId) {
@@ -386,12 +408,10 @@ webpackJsonp([0],[
 	    $(squareLetter).text('x');
 	    board[squareId] = 'x';
 	    boardValue = 'x';
-	    boardEvents.onUpdatePlay(squareId, boardValue);
 	  } else {
 	    $(squareLetter).text('o');
 	    board[squareId] = 'o';
 	    boardValue = 'o';
-	    boardEvents.onUpdatePlay(squareId, boardValue);
 	  }
 	  turnNum += 1;
 	  //make squares not clickable after placing a symbol in the square
@@ -402,46 +422,158 @@ webpackJsonp([0],[
 	    gameOver();
 	    boardLock();
 	  }
+	  return boardValue;
+	};
+
+	// // make squares clickable
+	// const onAClick = function() {
+	//   putSymbol('#sqa', 0);
+	// };
+	//
+	// const onBClick = function() {
+	//   putSymbol('#sqb', 1);
+	// };
+	//
+	// const onCClick = function() {
+	//     putSymbol('#sqc', 2);
+	// };
+	//
+	// const onDClick = function() {
+	//     putSymbol('#sqd', 3);
+	// };
+	//
+	// const onEClick = function() {
+	//     putSymbol('#sqe', 4);
+	// };
+	//
+	// const onFClick = function() {
+	//   putSymbol('#sqf', 5);
+	// };
+	//
+	// const onGClick = function() {
+	//   putSymbol('#sqg', 6);
+	// };
+	//
+	// const onHClick = function() {
+	//   putSymbol('#sqh', 7);
+	// };
+	//
+	// const onIClick = function() {
+	//   putSymbol('#sqi', 8);
+	// };
+	//
+	// const addboardHandler = () => {
+	//   $('#sqa').on('click', onAClick);
+	//   $('#sqb').on('click', onBClick);
+	//   $('#sqc').on('click', onCClick);
+	//   $('#sqd').on('click', onDClick);
+	//   $('#sqe').on('click', onEClick);
+	//   $('#sqf').on('click', onFClick);
+	//   $('#sqg').on('click', onGClick);
+	//   $('#sqh').on('click', onHClick);
+	//   $('#sqi').on('click', onIClick);
+	// };
+
+	module.exports = {
+	  // addboardHandler,
+	  winnerCondition: winnerCondition,
+	  gameOver: gameOver,
+	  boardLock: boardLock,
+	  // updateGame,
+	  clearBoard: clearBoard,
+	  putSymbol: putSymbol
+	};
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
+
+/***/ },
+/* 10 */
+/***/ function(module, exports, __webpack_require__) {
+
+	/* WEBPACK VAR INJECTION */(function($) {'use strict';
+
+	var logic = __webpack_require__(9);
+	// const allAccess = require('../auth/all-access.js');
+	// const store = require('../store.js');
+	var apiBoard = __webpack_require__(11);
+	var uiBoard = __webpack_require__(12);
+
+	var onCreateGame = function onCreateGame() {
+	  apiBoard.createGame().then(uiBoard.createGameSuccess).catch(uiBoard.createGameFailure);
+	  // logic.clearBoard();
+	  $('#board').show();
+	};
+
+	var onUpdatePlay = function onUpdatePlay(cell) {
+	  var data = {
+	    game: {
+	      cell: cell
+	    },
+	    "over": false
+	  };
+	  console.log(data);
+	  apiBoard.updatePlay(data).then(uiBoard.updateGameSuccess).catch(uiBoard.failure);
+	};
+
+	var onGetGames = function onGetGames() {
+	  apiBoard.showIndex().then(uiBoard.getGamesSuccess).catch(uiBoard.getGamesFailure);
 	};
 
 	// make squares clickable
 	var onAClick = function onAClick() {
-	  putSymbol('#sqa', 0);
+	  var index = 0;
+	  var value = logic.putSymbol('#sqa', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
 	var onBClick = function onBClick() {
-	  putSymbol('#sqb', 1);
+	  var index = 1;
+	  var value = logic.putSymbol('#sqb', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
 	var onCClick = function onCClick() {
-	  putSymbol('#sqc', 2);
+	  var index = 2;
+	  var value = logic.putSymbol('#sqc', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
 	var onDClick = function onDClick() {
-	  putSymbol('#sqd', 3);
+	  var index = 3;
+	  var value = logic.putSymbol('#sqd', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
 	var onEClick = function onEClick() {
-	  putSymbol('#sqe', 4);
+	  var index = 4;
+	  var value = logic.putSymbol('#sqe', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
 	var onFClick = function onFClick() {
-	  putSymbol('#sqf', 5);
+	  var index = 5;
+	  var value = logic.putSymbol('#sqf', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
 	var onGClick = function onGClick() {
-	  putSymbol('#sqg', 6);
+	  var index = 6;
+	  var value = logic.putSymbol('#sqg', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
 	var onHClick = function onHClick() {
-	  putSymbol('#sqh', 7);
+	  var index = 7;
+	  var value = logic.putSymbol('#sqh', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
 	var onIClick = function onIClick() {
-	  putSymbol('#sqi', 8);
+	  var index = 8;
+	  var value = logic.putSymbol('#sqi', index);
+	  onUpdatePlay({ index: index, value: value });
 	};
 
-	var addboardHandler = function addboardHandler() {
+	var addGameHandler = function addGameHandler() {
 	  $('#sqa').on('click', onAClick);
 	  $('#sqb').on('click', onBClick);
 	  $('#sqc').on('click', onCClick);
@@ -451,64 +583,13 @@ webpackJsonp([0],[
 	  $('#sqg').on('click', onGClick);
 	  $('#sqh').on('click', onHClick);
 	  $('#sqi').on('click', onIClick);
-	};
-
-	module.exports = {
-	  addboardHandler: addboardHandler,
-	  winnerCondition: winnerCondition,
-	  gameOver: gameOver,
-	  boardLock: boardLock,
-	  clearBoard: clearBoard
-	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
-
-/***/ },
-/* 10 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function($) {'use strict';
-	// const logic = require('./logic.js');
-	// const allAccess = require('../auth/all-access.js');
-
-	var store = __webpack_require__(7);
-	var apiBoard = __webpack_require__(11);
-	var uiBoard = __webpack_require__(12);
-
-	var onCreateGame = function onCreateGame() {
-	  apiBoard.createGame(store.gameData).then(uiBoard.createGameSuccess).catch(uiBoard.createGameFailure);
-	  // logic.clearBoard();
-	  $('#board').show();
-	};
-
-	var onUpdatePlay = function onUpdatePlay(squareId, boardValue) {
-	  var gameData = {
-	    game: {
-	      cell: {
-	        index: squareId,
-	        value: boardValue
-	      },
-	      "over": false
-	    }
-	  };
-	  console.log(gameData);
-	  store.gameData = gameData;
-	  apiBoard.updatePlay(gameData).then(uiBoard.updateGameSuccess).catch(uiBoard.failure);
-	};
-
-	var onGetGames = function onGetGames() {
-	  apiBoard.showIndex().then(uiBoard.getGamesSuccess).catch(uiBoard.getGamesFailure);
-	};
-
-	var addGameHandler = function addGameHandler() {
 	  // when the create-game id is clicked, call the onCreateGame function
 	  $('#create-game').on('click', onCreateGame);
 	  $('#get-games').on('click', onGetGames);
 	};
 
 	module.exports = {
-	  addGameHandler: addGameHandler,
-	  onUpdatePlay: onUpdatePlay,
-	  onGetGames: onGetGames
+	  addGameHandler: addGameHandler
 	};
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(2)))
 
@@ -564,9 +645,9 @@ webpackJsonp([0],[
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function($) {"use strict";
-	// const logictwo = require('./logic.js');
 
 	var store = __webpack_require__(7);
+	var logic = __webpack_require__(9);
 
 	var success = function success(gameData) {
 	  $('.messages').text('success');
@@ -580,14 +661,11 @@ webpackJsonp([0],[
 
 	//creatGameSuccess
 	var createGameSuccess = function createGameSuccess(gameData) {
-	  // $('.col-xs-4').on('click');
 	  store.game = gameData.game;
-
 	  $('.playerMessages').text("");
 	  $('.messages').text('NEW GAME');
-	  // debugger;
-	  // logictwo.clearBoard();
 	  $('#board').show();
+	  logic.clearBoard();
 	  console.log(gameData);
 	};
 
@@ -596,7 +674,7 @@ webpackJsonp([0],[
 	};
 
 	var updateGameSuccess = function updateGameSuccess(gameData) {
-	  store.gameData.game = gameData.game;
+	  store.game = gameData.game;
 	};
 
 	var getGamesSuccess = function getGamesSuccess(gameData) {
