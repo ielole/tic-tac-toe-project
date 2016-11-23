@@ -1,5 +1,5 @@
 'use strict';
-
+const logic = require('../board/logic.js');
 const store = require('../store.js');
 
  $('#board').hide();
@@ -18,17 +18,25 @@ const signInSuccess = (data) => {
   $('.messages').text("You've successfully signed in!");
   $('#signInModal').modal('hide');
   $('.show-me-the-buttons').show();
+  $('.signed-in').show();
+  $('.signed-out').hide();
+  // logic.clearBoard();
   //  $('.col-xs-4').off('click');
   // $('#board').show();
   };
 
 const signOutSuccess = (data) => {
   //store.user = data.user;
+  logic.clearBoard();
   success(data);
   $('.messages').text("You've successfully signed out!");
   $('#signOutModal').modal('hide');
   $('#board').hide();
   $('.show-me-the-buttons').hide();
+  $('.signed-in').hide();
+  $('.signed-out').show();
+
+  // return true;
   // $('#create-game').off('click');
 
 };

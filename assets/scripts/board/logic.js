@@ -1,5 +1,7 @@
 'use strict';
-const boardEvents = require('./events-board.js');
+// const boardEvents = require('./events-board.js');
+// const authUi = require('../auth/ui.js');
+// const store = require('../store.js');
 
 let boardValue;
 let board = ['','','','','','','','',''];
@@ -66,8 +68,9 @@ const clearBoard = function() {
   $('#sqh').css('pointer-events', 'auto');
   $('#sqi').css('pointer-events', 'auto');
 
-  $('#board').hide();
+  // $('#board').hide();
   $('.messages').text("");
+  console.log('all clear');
 // ---------
 //   for (let i = 0; i < board.length; i++) {
 //     board[i] = '';
@@ -80,7 +83,7 @@ const clearBoard = function() {
  //create a function which evaluates if the game is over
 const gameOver = function() {
    if (winnerCondition()) {
-     clearBoard();
+    //  clearBoard();
     console.log("Game over");
     // store.gameData.game.over = true;
     // endOfGame = true;
@@ -96,13 +99,25 @@ const gameOver = function() {
 //function that makes unclicked squares not clickable if game is over
 const boardLock = function() {
   if (gameOver()) {
-     $('.col-xs-4').off('click');
+     $('.col-xs-4').css('pointer-events', 'none');
   }
   return true;
   // store.gameData.game.over = true;
 };
 // causes gameOver to run second time?
-
+// const updateGame = function() {
+// let gameData = {
+//   game: {
+//     cell: {
+//       index: squareId,
+//       value: boardValue
+//     },
+//     "over": false,
+//   }
+// };
+// console.log(gameData);
+// store.gameData = gameData;
+// };
 
 // function to alternate placement of 'x' and 'o'
 const putSymbol = function(squareLetter, squareId) {
@@ -112,12 +127,10 @@ const putSymbol = function(squareLetter, squareId) {
     $(squareLetter).text('x');
     board[squareId] = 'x';
     boardValue = 'x';
-    boardEvents.onUpdatePlay(squareId, boardValue);
   }else {
     $(squareLetter).text('o');
     board[squareId] = 'o';
     boardValue = 'o';
-    boardEvents.onUpdatePlay(squareId, boardValue);
   }
     turnNum += 1;
   //make squares not clickable after placing a symbol in the square
@@ -128,61 +141,64 @@ const putSymbol = function(squareLetter, squareId) {
     gameOver();
     boardLock();
   }
+  return boardValue;
 };
 
-// make squares clickable
-const onAClick = function() {
-  putSymbol('#sqa', 0);
-};
-
-const onBClick = function() {
-  putSymbol('#sqb', 1);
-};
-
-const onCClick = function() {
-    putSymbol('#sqc', 2);
-};
-
-const onDClick = function() {
-    putSymbol('#sqd', 3);
-};
-
-const onEClick = function() {
-    putSymbol('#sqe', 4);
-};
-
-const onFClick = function() {
-  putSymbol('#sqf', 5);
-};
-
-const onGClick = function() {
-  putSymbol('#sqg', 6);
-};
-
-const onHClick = function() {
-  putSymbol('#sqh', 7);
-};
-
-const onIClick = function() {
-  putSymbol('#sqi', 8);
-};
-
-const addboardHandler = () => {
-  $('#sqa').on('click', onAClick);
-  $('#sqb').on('click', onBClick);
-  $('#sqc').on('click', onCClick);
-  $('#sqd').on('click', onDClick);
-  $('#sqe').on('click', onEClick);
-  $('#sqf').on('click', onFClick);
-  $('#sqg').on('click', onGClick);
-  $('#sqh').on('click', onHClick);
-  $('#sqi').on('click', onIClick);
-};
+// // make squares clickable
+// const onAClick = function() {
+//   putSymbol('#sqa', 0);
+// };
+//
+// const onBClick = function() {
+//   putSymbol('#sqb', 1);
+// };
+//
+// const onCClick = function() {
+//     putSymbol('#sqc', 2);
+// };
+//
+// const onDClick = function() {
+//     putSymbol('#sqd', 3);
+// };
+//
+// const onEClick = function() {
+//     putSymbol('#sqe', 4);
+// };
+//
+// const onFClick = function() {
+//   putSymbol('#sqf', 5);
+// };
+//
+// const onGClick = function() {
+//   putSymbol('#sqg', 6);
+// };
+//
+// const onHClick = function() {
+//   putSymbol('#sqh', 7);
+// };
+//
+// const onIClick = function() {
+//   putSymbol('#sqi', 8);
+// };
+//
+// const addboardHandler = () => {
+//   $('#sqa').on('click', onAClick);
+//   $('#sqb').on('click', onBClick);
+//   $('#sqc').on('click', onCClick);
+//   $('#sqd').on('click', onDClick);
+//   $('#sqe').on('click', onEClick);
+//   $('#sqf').on('click', onFClick);
+//   $('#sqg').on('click', onGClick);
+//   $('#sqh').on('click', onHClick);
+//   $('#sqi').on('click', onIClick);
+// };
 
 module.exports = {
-  addboardHandler,
+  // addboardHandler,
   winnerCondition,
   gameOver,
   boardLock,
+  // updateGame,
   clearBoard,
+  putSymbol,
 };
