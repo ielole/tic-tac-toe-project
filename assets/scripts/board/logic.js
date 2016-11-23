@@ -1,5 +1,6 @@
 'use strict';
 const boardEvents = require('./events-board.js');
+// const authUi = require('../auth/ui.js');
 
 let boardValue;
 let board = ['','','','','','','','',''];
@@ -68,6 +69,7 @@ const clearBoard = function() {
 
   $('#board').hide();
   $('.messages').text("");
+  console.log('all clear');
 // ---------
 //   for (let i = 0; i < board.length; i++) {
 //     board[i] = '';

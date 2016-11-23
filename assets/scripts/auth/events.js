@@ -33,9 +33,9 @@ const onSignUp = function (event) {
  const onSignOut = function (event) {
    event.preventDefault();
    api.signOut()
-     .then(ui.signOutSuccess)
-     .catch(ui.failure);
-     $('.playerMessages').text('');
+    .then(ui.signOutSuccess)
+    .catch(ui.failure);
+    $('.playerMessages').text('');
  };
 
 const addHandlers = () => {
