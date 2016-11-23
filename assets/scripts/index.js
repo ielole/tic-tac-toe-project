@@ -9,6 +9,7 @@ $(()=>{
   authEvents.addHandlers();
   gameLogic.addboardHandler();
   gameEvents.addGameHandler();
+  $('.signed-in').hide();
 });
 
 // this file with the code above allows the code from the required files to

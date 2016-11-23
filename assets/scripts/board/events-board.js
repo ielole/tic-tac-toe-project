@@ -1,5 +1,5 @@
 'use strict';
-// const logic = require('./logic.js');
+ const logic = require('./logic.js');
 // const allAccess = require('../auth/all-access.js');
 const store = require('../store.js');
 const apiBoard = require('./api-board.js');

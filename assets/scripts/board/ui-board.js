@@ -1,6 +1,7 @@
 "use strict";
 const store = require('../store.js');
 
+
 const success = (gameData) => {
   $('.messages').text('success');
   console.log(gameData);
