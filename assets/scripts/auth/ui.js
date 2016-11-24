@@ -4,10 +4,9 @@ const store = require('../store.js');
 
  $('#board').hide();
 
-const success = (data) => {
+const success = () => {
   $('.messages').text('success');
-  console.log(data);
-  // $('#changePasswordModal').modal('hide');
+  // console.log(data);
 };
 
 const signUpSuccess = () => {
@@ -31,10 +30,6 @@ const signInSuccess = (data) => {
   $("#sign-in").trigger("reset");
   $('.signed-in').show();
   $('.signed-out').hide();
-  // $("#sign-in").trigger("reset");
-  // logic.clearBoard();
-  //  $('.col-xs-4').off('click');
-  // $('#board').show();
   };
 
 const signInFailure = () => {
@@ -56,7 +51,6 @@ const changePasswordFailure = () => {
 };
 
 const signOutSuccess = (data) => {
-  //store.user = data.user;
   logic.clearBoard();
   success(data);
   $('.messages').text("You've successfully signed out!");
@@ -67,9 +61,9 @@ const signOutSuccess = (data) => {
   $('.signed-out').show();
 };
 
-const failure = (error) => {
+const failure = () => {
   $('.messages').text('Oops, try again.');
-  console.error(error);
+  // console.error(error);
 };
 
 module.exports = {

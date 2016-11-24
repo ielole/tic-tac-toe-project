@@ -1,10 +1,10 @@
 'use strict';
 
-const getFormFields = require(`../../../lib/get-form-fields`);
+const getFormFields = require('../../../lib/get-form-fields');
 
 const api = require('./api');
 const ui = require('./ui');
-//const all = require('./all-access');
+
 
 const onSignUp = function (event) {
   let data = getFormFields(this);
@@ -14,28 +14,28 @@ const onSignUp = function (event) {
     .catch(ui.signUpFailure);
 };
 
- const onSignIn = function (event) {
-   let data = getFormFields(this);
-   event.preventDefault();
-   api.signIn(data)
-     .then(ui.signInSuccess)
-     .catch(ui.signInFailure);
+const onSignIn = function (event) {
+  let data = getFormFields(this);
+  event.preventDefault();
+  api.signIn(data)
+    .then(ui.signInSuccess)
+    .catch(ui.signInFailure);
  };
 
- const onChangePassword = function (event) {
-   let data = getFormFields(this);
-   event.preventDefault();
-   api.changePassword(data)
-     .then(ui.changePasswordSuccess)
-     .catch(ui.changePasswordFailure);
+const onChangePassword = function (event) {
+  let data = getFormFields(this);
+  event.preventDefault();
+  api.changePassword(data)
+    .then(ui.changePasswordSuccess)
+    .catch(ui.changePasswordFailure);
 };
 
- const onSignOut = function (event) {
-   event.preventDefault();
-   api.signOut()
+const onSignOut = function (event) {
+  event.preventDefault();
+  api.signOut()
     .then(ui.signOutSuccess)
     .catch(ui.failure);
-    $('.playerMessages').text('');
+    $('.player-messages').text('');
  };
 
 const addHandlers = () => {
@@ -45,11 +45,8 @@ const addHandlers = () => {
   $('#sign-out').on('submit', onSignOut);
 };
 
-// const notTilSignInSuccess = () => {
-// $('#board').hide();
-// };
+
 
 module.exports = {
   addHandlers,
-  // notTilSignInSuccess
 };

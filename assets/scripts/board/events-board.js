@@ -1,7 +1,5 @@
 'use strict';
 const logic = require('./logic.js');
-// const allAccess = require('../auth/all-access.js');
-// const store = require('../store.js');
 const apiBoard = require('./api-board.js');
 const uiBoard = require('./ui-board.js');
 
@@ -9,8 +7,6 @@ const onCreateGame = function() {
   apiBoard.createGame()
     .then(uiBoard.createGameSuccess)
     .catch(uiBoard.createGameFailure);
-    // logic.clearBoard();
-    $('#board').show();
 };
 
 const onUpdatePlay = function(cell) {
@@ -20,16 +16,16 @@ const onUpdatePlay = function(cell) {
         },
         "over": false,
       };
-  console.log(data);
+  // console.log(data);
   apiBoard.updatePlay(data)
     .then(uiBoard.updateGameSuccess)
     .catch(uiBoard.failure);
 };
 
 const onGetGames = function() {
-apiBoard.showIndex()
-  .then(uiBoard.getGamesSuccess)
-  .catch(uiBoard.getGamesFailure);
+  apiBoard.showIndex()
+    .then(uiBoard.getGamesSuccess)
+    .catch(uiBoard.getGamesFailure);
 };
 
 // make squares clickable
@@ -54,13 +50,13 @@ const onCClick = function() {
 const onDClick = function() {
   let index = 3;
   let value = logic.putSymbol('#sqd', index);
-    onUpdatePlay({index, value});
+  onUpdatePlay({index, value});
 };
 
 const onEClick = function() {
   let index = 4;
   let value = logic.putSymbol('#sqe', index);
-    onUpdatePlay({index, value});
+  onUpdatePlay({index, value});
 };
 
 const onFClick = function() {
@@ -104,5 +100,4 @@ const addGameHandler = () => {
 
 module.exports = {
   addGameHandler,
-  // onGetGames,
 };
