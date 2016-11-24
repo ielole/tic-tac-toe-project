@@ -4,16 +4,16 @@ Produce documentation in the form of a README, which must:
 
 <!-- Link to your hosted game in the URL section of your Github repo. -->
 
-https://ielole.github.io/tic-tac-toe-project/
+<https://ielole.github.io/tic-tac-toe-project/>
 
 <!-- List technologies used. -->
 
 #Project built with:
-  *JavaScript
-  *HTML
-  *SCSS and CSS
-  *jQuery
-  *Utilized: an API and Rails
+    * JavaScript
+    * HTML
+    * SCSS and CSS
+    * jQuery
+    * Utilized: an API and Rails
 
 <!-- Document your planning and tell a story about your development process and problem-solving strategy. -->
 
@@ -22,10 +22,9 @@ My inital plan was to work through the project by coding each step that a player
 
 <!-- List unsolved problems which would be fixed in future iterations. -->
 #Changes to be made in future:
--utilizing the game api
--providing players with more feedback during the game
-  -Player X it your turn
-  -You've Won
+    * Alter the user interface to give the game a cohesive theme.
+    * Return incomplete games for the user to finish.
+    * Refactor the code to have a more definitive separation of concerns.
 
 
 <!-- Link to wireframes and user stories. -->

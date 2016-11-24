@@ -6,6 +6,7 @@ $container-color: #86608e;
 $message-font-size: 50px;
 $white: #fff;
 $font-color: #000;
+$instructions-font: Helvetica, serif;
 
 body {
   background-color: $container-color;
@@ -115,8 +116,9 @@ body {
 }
 
 .centerme {
-  margin: 0 auto;
+  margin: 0, auto;
 }
+
 
 .col-xs-4 {
   color: $font-color;
@@ -129,4 +131,34 @@ body {
 
 .show-me-the-buttons {
   display: none;
+}
+
+.footer-message {
+  color: $white;
+}
+
+.nav-bar-brand {
+  color: $white;
+}
+
+.instructions {
+  font-family: monospace;
+  line-height: 2.5em;
+  margin: 2em;
+  text-align: justify;
+}
+
+.larger {
+  font-size: 16px;
+  font-weight: 900;
+}
+
+.player-messages {
+  font-family: serif;
+  font-size: 2em;
+}
+
+.messages {
+  font-family: serif;
+  font-size: 2em;
 }

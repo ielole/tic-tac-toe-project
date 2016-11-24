@@ -24,7 +24,7 @@ const changePassword = (data) =>
     method: 'PATCH',
     data,
     headers: {
-      Authorization: 'Token token=' + store.user.token, /* necessary to save games */
+      Authorization: 'Token token=' + store.user.token,
    }
   });
 

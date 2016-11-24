@@ -2,7 +2,6 @@
 const store = require('../store.js');
 const logic = require('./logic.js');
 
-
 const success = (gameData) => {
   $('.messages').text('success');
   console.log(gameData);
@@ -16,11 +15,11 @@ const failure = (error) => {
 //creatGameSuccess
 const createGameSuccess = (gameData) => {
   store.game = gameData.game;
-  $('.playerMessages').text("");
+  $('.player-messages').text("");
   $('.messages').text('NEW GAME');
   $('#board').show();
    logic.clearBoard();
-  console.log(gameData);
+  // console.log(gameData);
 };
 
 const createGameFailure = () => {
@@ -33,7 +32,7 @@ const updateGameSuccess = (gameData) => {
 
 const getGamesSuccess = (gameData) => {
   $('.messages').text('NUMBER OF GAMES PLAYED = ' + gameData.games.length);
-  console.log(gameData.games.length);
+  // console.log(gameData.games.length);
 };
 
 const getGamesFailure = () => {
