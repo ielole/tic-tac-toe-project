@@ -1,7 +1,7 @@
 'use strict';
 
 const config = {
-  host: 'https://aqueous-atoll-85096.herokuapp.com/'
+  host: 'https://radiant-caverns-96221.herokuapp.com'
 };
 
 module.exports = config;
